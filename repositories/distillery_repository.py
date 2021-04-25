@@ -37,4 +37,15 @@ def select(id):
 # UPDATE
 def update(distillery):
     sql = "UPDATE distilleries SET (name, region, founded, whiskies) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [distillery.name, distillery.region, distillery.founded, distillery.whiskies, 
+    values = [distillery.name, distillery.region, distillery.founded, distillery.whiskies]
+    run_sql(sql, values)
+
+# DELETE
+def delete_all():
+    sql = "DELETE FROM distilleries"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM distilleries WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
