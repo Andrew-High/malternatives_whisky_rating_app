@@ -4,3 +4,4 @@ class Distillery:
         self.region = region
         self.founded = founded
         self.whiskies = whiskies
+        self.id = id

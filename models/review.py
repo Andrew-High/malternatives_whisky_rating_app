@@ -1,6 +1,7 @@
 class Review:
-    def __init__(self, whisky, rating, description=None, date):
+    def __init__(self, whisky, rating, date, description=None, id=None):
         self.whisky = whisky
         self.rating = rating
-        self.description = description
         self.date = date
+        self.description = description
+        self.id = id
