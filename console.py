@@ -6,9 +6,9 @@ import repositories.user_repository as user_repository
 from models.whisky import Whisky
 import repositories.whisky_repository as whisky_repository
 
-distillery_repository.delete_all
-user_repository.delete_all
-whisky_repository.delete_all
+distillery_repository.delete_all()
+user_repository.delete_all()
+whisky_repository.delete_all()
 
 user_1 = User("Andrew High")
 user_repository.save(user_1)
@@ -52,4 +52,4 @@ distillery_repository.save(distillery_2)
 distillery_3 = Distillery("Dalwhinnie", "Highlands", 1898)
 distillery_repository.save(distillery_3)
 
-pdb.set_trace()
+# pdb.set_trace()

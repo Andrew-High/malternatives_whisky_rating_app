@@ -1,12 +1,14 @@
+import pdb
 from db.run_sql import run_sql
 from models.whisky import Whisky
 
 # CREATE
 def save(whisky):
-    sql = "INSERT INTO whiskies (name, type, flavour_profile) VALUES (%s, %s) RETURNING id "
+    sql = "INSERT INTO whiskies (name, type, flavour_profile) VALUES (%s, %s, %s) RETURNING id "
     values = [whisky.name, whisky.type, whisky.flavour_profile]
     results = run_sql(sql, values)
-    id = results[0]["id"]
+    # pdb.set_trace()
+    id = results
     whisky.id = id
 
 # READ
