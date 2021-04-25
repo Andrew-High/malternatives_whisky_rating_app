@@ -4,9 +4,9 @@ from models.whisky import Whisky
 # CREATE
 def save(whisky):
     sql = "INSERT INTO whiskies (name, type, flavour_profile) VALUES (%s, %s) RETURNING id "
-    values = [whisky.name, whisky,type, whisky.flavour_profile]
+    values = [whisky.name, whisky.type, whisky.flavour_profile]
     results = run_sql(sql, values)
-    id = results [0]["id"]
+    id = results[0]["id"]
     whisky.id = id
 
 # READ
