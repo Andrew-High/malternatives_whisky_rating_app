@@ -1,4 +1,4 @@
 import unittest
-from models.whisky import whisky
+from models.whisky import Whisky
 
-class TestWhisky(unittest.TestCase):
+# class TestWhisky(unittest.TestCase):

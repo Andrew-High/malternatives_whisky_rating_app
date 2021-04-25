@@ -1,4 +1,4 @@
 import unittest
 from models.user import user
 
-class TestUser(unittest.TestUser):
+# class TestUser(unittest.TestUser):
