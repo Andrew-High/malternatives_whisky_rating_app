@@ -1,7 +1,7 @@
 import unittest
-from models.user import user
+from models.user import User
 
-class TestUser(unittest.TestUser):
+class TestUser(unittest.TestCase):
     def setUp(self):
         self.user_1 = User("Andrew High")
         self.user_2 = User("Fraser High")
