@@ -15,9 +15,6 @@ def distilleries():
         whiskies = whisky_repository.select_by_distillery(distillery.id)
         if whiskies == None:
             whiskies = []
-        else:
-            for whisky in whiskies:
-                distillery.whiskies.append(whisky)
     return render_template("distilleries/index.html", distilleries=distilleries)
 
 # NEW

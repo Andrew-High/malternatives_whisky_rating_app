@@ -9,6 +9,7 @@
     <h3><a href="/distilleries/{{distillery.id}}">{{ distillery.name }}</a></h3>
     {% for whisky in distillery.whiskies %}
         <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>
+        
     {% endfor%}
 </section>
 {% endfor %}
