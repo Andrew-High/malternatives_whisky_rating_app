@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 from models.whisky import Whisky
 import repositories.whisky_repository as whisky_repository
+import repositories.distillery_repository as distillery_repository
 
 whiskies_blueprint = Blueprint("whisky", __name__)
 
@@ -22,7 +23,8 @@ def create_whisky():
     type = request.form["type"]
     flavour_profile = request.form["flavour_profile"]
     distillery_id = request.form["distillery_id"]
-    new_whisky = Whisky(name, type, flavour_profile, distillery_id)
+    distillery = distillery_repository.select(distillery_id)
+    new_whisky = Whisky(name, type, flavour_profile, distillery)
     whisky_repository.save(new_whisky)
     return redirect("/whiskies")
 

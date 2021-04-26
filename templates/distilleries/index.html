@@ -7,8 +7,9 @@
 {% for distillery in distilleries %}
 <section>
     <h3><a href="/distilleries/{{distllery.id}}">{{ distillery.name }}</a></h3>
-    {% for whisky in distillery_repository.select_whiskies_of_distillery(distillery.id)%}
+    {% for whisky in distillery.whiskies%}
         <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>
+    {% endfor%}
 </section>
 {% endfor %}
 
