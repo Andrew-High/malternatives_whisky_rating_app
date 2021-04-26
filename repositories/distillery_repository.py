@@ -45,7 +45,6 @@ def delete(id):
     run_sql(sql, values)
 
 # additional logic functions
-
 def select_whiskies_of_distillery(id):
     whiskies = []
     sql = "SELECT * FROM whiskies WHERE distillery_id = %s"

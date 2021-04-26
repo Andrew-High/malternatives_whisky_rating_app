@@ -31,3 +31,9 @@ CREATE TABLE reviews (
     whisky_id SERIAL REFERENCES whiskies(id),
     user_id SERIAL REFERENCES users(id)
 );
+
+CREATE TABLE wishlists (
+    id SERIAL PRIMARY KEY,
+    user_id SERIAL REFERENCES users(id),
+    whisky_id SERIAL REFERENCES whiskkies(id)
+);
