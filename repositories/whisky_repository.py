@@ -44,6 +44,7 @@ def select_by_distillery(distillery_id):
     results = run_sql(sql, values)
     for result in results:
         whiskies.append(result)
+    return whiskies
 
 
 # UPDATE

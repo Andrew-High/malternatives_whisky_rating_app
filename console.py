@@ -6,9 +6,9 @@ import repositories.user_repository as user_repository
 from models.whisky import Whisky
 import repositories.whisky_repository as whisky_repository
 
-distillery_repository.delete_all()
 user_repository.delete_all()
 whisky_repository.delete_all()
+distillery_repository.delete_all()
 
 user_1 = User("Andrew High")
 user_repository.save(user_1)
@@ -49,7 +49,7 @@ whisky_repository.save(whisky_4)
 whisky_5 = Whisky("Victoriana", "Single Malt", "Fruity")
 whisky_repository.save(whisky_5)
 
-whisky_6 = Whisky("Port Charlotte 10", "Single Malt", "Peated", distillery_1)
+whisky_6 = Whisky("Port Charlotte 10", "Single Malt", "Smokey", distillery_1)
 whisky_repository.save(whisky_6)
 
-pdb.set_trace()
+# pdb.set_trace()

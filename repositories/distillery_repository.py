@@ -17,7 +17,8 @@ def select_all():
     sql = "SELECT * FROM distilleries"
     results = run_sql(sql)
     for result in results:
-        distillery = Distillery(result["name"], result["region"], result["founded"])
+        whiskies = whisky_repository.select_by_distillery(result["id"])
+        distillery = Distillery(result["name"], result["region"], result["founded"], whiskies, result["id"])
         distilleries.append(distillery)
     return distilleries
 
@@ -25,13 +26,14 @@ def select(id):
     sql = "SELECT * FROM distilleries WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    distillery = Distillery(result["name"], result["region"], result["founded"])
+    whiskies = whisky_repository.select_by_distillery(id)
+    distillery = Distillery(result["name"], result["region"], result["founded"], whiskies, result["id"])
     return distillery
 
 # UPDATE
 def update(distillery):
-    sql = "UPDATE distilleries SET (name, region, founded, whiskies) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [distillery.name, distillery.region, distillery.founded]
+    sql = "UPDATE distilleries SET (name, region, founded, whiskies, id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [distillery.name, distillery.region, distillery.founded, distillery.id, distillery.whiskies]
     run_sql(sql, values)
 
 # DELETE
@@ -51,6 +53,6 @@ def select_whiskies_of_distillery(id):
     values = [id]
     results = run_sql(sql,values)
     for result in results:
-        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], result["id"], result["distillery_id"])
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], result["id"], result["whiskies"], result["distillery_id"])
         whiskies.append(whisky)
     return whiskies

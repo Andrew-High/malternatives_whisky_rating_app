@@ -9,13 +9,15 @@ distilleries_blueprint = Blueprint("distillery", __name__)
 # INDEX
 @distilleries_blueprint.route("/distilleries", methods = ["GET"])
 def distilleries():
-    # pdb.set_trace()
     distilleries = distillery_repository.select_all()
+    # pdb.set_trace()
     for distillery in distilleries:
         whiskies = whisky_repository.select_by_distillery(distillery.id)
-        whiskies = []
-        for whisky in whiskies:
-            distillery.whiskies.append(whisky)
+        if whiskies == None:
+            whiskies = []
+        else:
+            for whisky in whiskies:
+                distillery.whiskies.append(whisky)
     return render_template("distilleries/index.html", distilleries=distilleries)
 
 # NEW
