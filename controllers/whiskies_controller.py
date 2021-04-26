@@ -28,12 +28,12 @@ def create_whisky():
 
 # EDIT
 @whiskies_blueprint.route("/whiskies/<id>/edit")
-def edit whisky(id):
+def edit_whisky(id):
     whisky = whisky_repository.select(id)
     return render_template("whiskies/edit.html", whisky = whisky)
 
 # UPDATE
-@whiskies_blueprint.route("whiskies/<id>", methods = ["POST"])
+@whiskies_blueprint.route("/whiskies/<id>", methods = ["POST"])
 def update_whisky(id):
     name = request.form["name"]
     type = request.form["type"]
@@ -43,7 +43,7 @@ def update_whisky(id):
     whisky_repository.update(whisky)
 
 # DELETE
-@whiskies_blueprint.route("whiskies/<id>/delete", methods = ["POST"])
+@whiskies_blueprint.route("/whiskies/<id>/delete", methods = ["POST"])
 def delete_whisky(id):
     whisky_repository.delete(id)
     return redirect("/whiskies")

@@ -44,3 +44,11 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+# additional logic functions
+def get_distillery(distillery_id):
+    sql = "SELECT * FROM distilleries WHERE id = %s"
+    values = [distillery_id]
+    results = run_sql(sql, values)
+    distillery = Distillery(results["name"], results["region"], results["founded"], results["id"])
+    return distillery
+
