@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Distilleries</h2>
+<br>
+
+{% for distillery in distilleries %}
+<section>
+    <h3><a href="/distilleries/{{distllery.id}}">{{ distillery.name }}</a></h3>
+    {% for whisky in distillery_repository.select_whiskies_of_distillery(distillery.id)%}
+        <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>
+</section>
+{% endfor %}
+
+{% endblock %}

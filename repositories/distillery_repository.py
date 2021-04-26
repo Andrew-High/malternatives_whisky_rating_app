@@ -5,10 +5,10 @@ import repositories.whisky_repository as whisky_repository
 
 # CREATE
 def save (distillery):
-    sql = "INSERT INTO distilleries (name, region, founded) VALUES (%s, %s, %s) RETURNING id"
+    sql = "INSERT INTO distilleries (name, region, founded) VALUES (%s, %s, %s) RETURNING *"
     values = [distillery.name, distillery.region, distillery.founded]
     results = run_sql(sql, values)
-    id = results
+    id = results[0]["id"]
     distillery.id = id
 
 # READ

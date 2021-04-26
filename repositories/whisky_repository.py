@@ -1,15 +1,20 @@
 import pdb
 from db.run_sql import run_sql
 from models.whisky import Whisky
+import repositories.distillery_repository as distillery_repository
 
 # CREATE
 def save(whisky):
-    sql = "INSERT INTO whiskies (name, type, flavour_profile) VALUES (%s, %s, %s) RETURNING id "
-    values = [whisky.name, whisky.type, whisky.flavour_profile]
+    sql = "INSERT INTO whiskies (name, type, flavour_profile, distillery_id) VALUES (%s, %s, %s, %s) RETURNING * "
+    distillery_id = None
+    if whisky.distillery != None:
+        # pdb.set_trace()
+        distillery_id = whisky.distillery.id
+    values = [whisky.name, whisky.type, whisky.flavour_profile, distillery_id]
     results = run_sql(sql, values)
-    # pdb.set_trace()
-    id = results
+    id = results[0]["id"]
     whisky.id = id
+    return whisky
 
 # READ
 def select_all():
@@ -17,7 +22,11 @@ def select_all():
     sql = "SELECT * FROM whiskies"
     results = run_sql(sql)
     for result in results:
-        whisky = Whisky(result["name"], result["type"], result["flavour_profile"])
+        distillery = None
+        # pdb.set_trace()
+        if result["distillery_id"] != None:
+            distillery = distillery_repository.select(result["distillery_id"])
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery)
         whiskies.append(whisky)
     return whiskies
 
