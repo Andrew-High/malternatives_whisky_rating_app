@@ -50,8 +50,8 @@ def user(id):
     user = user_repository.select(id)
     return render_template("users/individual.html", user = user)
 
-# individual user's wishlist
+# recall individual user's wishlist
 def user_wishlist(id):
     user = user_repository.select(id)
-    user_wishlist = wishlist_repository.select(user_id)
+    user_wishlist = user_repository.get_wishlist_of_user(id)
     return render_template("user/wishlist.html", user = user, user_wishlist = user_wishlist)

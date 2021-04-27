@@ -52,4 +52,6 @@ whisky_repository.save(whisky_5)
 whisky_6 = Whisky("Port Charlotte 10", "Single Malt", "Smokey", distillery_1)
 whisky_repository.save(whisky_6)
 
-# pdb.set_trace()
+user_repository.add_whisky_to_user_wishlist(user_1.id, whisky_1.id)
+
+pdb.set_trace()

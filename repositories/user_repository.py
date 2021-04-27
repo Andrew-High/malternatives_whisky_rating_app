@@ -6,7 +6,7 @@ def save(user):
     sql = "INSERT INTO users (name) VALUES (%s) RETURNING id"
     values = [user.name]
     results = run_sql(sql, values)
-    id = results
+    id = results[0]["id"]
     user.id = id
 
 # READ
