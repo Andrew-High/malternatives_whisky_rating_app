@@ -37,16 +37,6 @@ def select(id):
     whisky = Whisky(result["name"], result["type"], result["flavour_profile"])
     return whisky
 
-def select_by_distillery(distillery_id):
-    whiskies = []
-    sql = "SELECT * FROM whiskies where distillery_id = %s"
-    values = [distillery_id]
-    results = run_sql(sql, values)
-    for result in results:
-        whiskies.append(result)
-    return whiskies
-
-
 # UPDATE
 def update(whisky):
     sql = "UPDATE whiskes SET (name, type, flavour_profile) = (%s, %s, %s) WHERE id = %s"
@@ -71,3 +61,11 @@ def get_distillery(distillery_id):
     distillery = Distillery(results["name"], results["region"], results["founded"], results["id"])
     return distillery
 
+def select_by_distillery(distillery_id):
+    whiskies = []
+    sql = "SELECT * FROM whiskies where distillery_id = %s"
+    values = [distillery_id]
+    results = run_sql(sql, values)
+    for result in results:
+        whiskies.append(result)
+    return whiskies

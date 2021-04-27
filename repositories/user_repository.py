@@ -32,7 +32,6 @@ def update(user):
     values = [user.name, user.id]
     run_sql(sql, values)
     
-
 # DELETE
 def delete_all():
     sql = "DELETE FROM users"

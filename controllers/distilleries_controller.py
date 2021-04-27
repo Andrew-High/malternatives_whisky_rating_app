@@ -10,7 +10,6 @@ distilleries_blueprint = Blueprint("distillery", __name__)
 @distilleries_blueprint.route("/distilleries", methods = ["GET"])
 def distilleries():
     distilleries = distillery_repository.select_all()
-    # pdb.set_trace()
     for distillery in distilleries:
         whiskies = whisky_repository.select_by_distillery(distillery.id)
         if whiskies == None:
