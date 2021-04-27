@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.user import User
+from models.whisky import Whisky
 import pdb
 
 # CREATE
@@ -47,7 +48,7 @@ def delete(id):
 # additional logic functions
 def get_wishlist_of_user(id):
     whiskies = []
-    sql = "SELECT whiskies.* FROM whiskies INNER JOIN wishlists ON wishlists.whisky_id WHERE wishlists.user_id = %s"
+    sql = "SELECT whiskies.* FROM whiskies INNER JOIN wishlists ON wishlists.whisky_id = whiskies.id WHERE wishlists.user_id = %s"
     values = [id]
     results = run_sql(sql,values)
     for result in results:
