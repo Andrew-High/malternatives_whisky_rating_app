@@ -8,6 +8,9 @@
 <section>
     <h3><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></h3>
     <p><a href="/distilleries/{{whisky.distillery.id}}">{{ whisky.distillery.name }}</a></p>
+    <form action="/whiskies/{{ whisky.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
 </section>
 {% endfor %}
 
