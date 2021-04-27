@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add a New Whisky</h2>
+
+<form action="/whiskies" method="POST">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="region">Distillery:</label>
+        <select name="region" id="region">
+            <option value="" disabled selected>Select a region</option>
+            <option value="campbeltown">Campbeltown</option>
+            <option value="islay">Islay</option>
+            <option value="speyside">Speyside</option>
+            <option value="highlands">Highlands</option>
+            <option value="lowlands">Lowlands</option>
+            <option value="islands">Islands</option>
+        </select>
+
+        <label for="founded">Founded:</label>
+        <input type="number" name="founded" id="founded">
+
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}

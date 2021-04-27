@@ -5,10 +5,13 @@
 
 <form action="/reviews" method="POST">
     <div>
+    <input type="hidden" name="user_id" value="{{user.id}}">
+    </div>
+    <div>
         <label for="whisky">Whisky:</label>
         <select name="whisky_id" id="whisky">
             {% for whisky in whiskies %}
-            <option value="{{ whisky.id }}">
+            <option name = "{{whisky.id}}" value="{{ whisky.id }}">
                 {{ whisky.name }}
             </option>
             {% endfor %}
@@ -23,6 +26,10 @@
             <option value="2">2</option>
             <option value="1">1</option>
         </select>
+    </div>
+    <div>
+    <label for="description">Review:</label>
+    <input type="text" name="description" id="description">
     </div>
     <div>
         <input type="submit">

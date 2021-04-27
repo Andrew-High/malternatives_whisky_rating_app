@@ -9,7 +9,6 @@ def save(whisky):
     sql = "INSERT INTO whiskies (name, type, flavour_profile, distillery_id) VALUES (%s, %s, %s, %s) RETURNING * "
     distillery_id = None
     if whisky.distillery != None:
-        # pdb.set_trace()
         distillery_id = whisky.distillery.id
     values = [whisky.name, whisky.type, whisky.flavour_profile, distillery_id]
     results = run_sql(sql, values)
@@ -24,7 +23,6 @@ def select_all():
     results = run_sql(sql)
     for result in results:
         distillery = None
-        # pdb.set_trace()
         if result["distillery_id"] != None:
             distillery = distillery_repository.select(result["distillery_id"])
         whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery)
@@ -32,6 +30,7 @@ def select_all():
     return whiskies
 
 def select(id):
+    pdb.set_trace()
     sql = "SELECT * FROM whiskies WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]

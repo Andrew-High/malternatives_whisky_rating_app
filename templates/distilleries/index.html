@@ -8,10 +8,12 @@
 <section>
     <h3><a href="/distilleries/{{distillery.id}}">{{ distillery.name }}</a></h3>
     {% for whisky in distillery.whiskies %}
-        <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>
-        
+        <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>     
     {% endfor%}
+    <button><a href="distilleries/{{distillery.id}}/delete">Delete this distillery</a></button>
 </section>
 {% endfor %}
+
+<button><a href="/distilleries/new">Add a new distillery</a></button>
 
 {% endblock %}
