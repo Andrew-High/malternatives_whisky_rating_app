@@ -5,7 +5,7 @@ import repositories.review_repository as review_repository
 import repositories.whisky_repository as whisky_repository
 import repositories.user_repository as user_repository
 
-users_blueprint = Blueprint("review", __name__)
+reviews_blueprint = Blueprint("review", __name__)
 
 # INDEX
 @reviews_blueprint.route("/reviews", methods = ["GET"])
