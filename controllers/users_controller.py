@@ -2,6 +2,7 @@ import pdb
 from flask import Blueprint, Flask, redirect, render_template, request
 from models.user import User
 import repositories.user_repository as user_repository
+import repositories.review_repository as review_repository
 
 users_blueprint = Blueprint("user", __name__)
 
@@ -53,7 +54,13 @@ def user(id):
 # recall individual user's wishlist
 @users_blueprint.route("/users/<id>/wishlist")
 def user_wishlist(id):
-    pdb.set_trace
     user = user_repository.select(id)
     user_wishlist = user_repository.get_wishlist_of_user(id)
     return render_template("users/wishlist.html", user = user, user_wishlist = user_wishlist)
+
+# recall individual user's reviews
+@users_blueprint.route("/users/<id>/reviews")
+def user_reviews(id):
+    user = user_repository.select(id)
+    user_reviews = review_repository.get_reviews_of_user(id)
+    return render_template("users/reviews.html", user = user, user_reviews = user_reviews)

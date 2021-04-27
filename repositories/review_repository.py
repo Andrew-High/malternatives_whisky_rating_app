@@ -54,7 +54,7 @@ def delete(id):
 # additional logic functions
 def get_reviews_of_user(id):
     reviews = []
-    sql = "SELECT reviews.* WHERE reviews.user_id = %s"
+    sql = "SELECT * FROM reviews WHERE reviews.user_id = %s"
     values = [id]
     results = run_sql(sql,values)
     for result in results:

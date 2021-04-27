@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ user.name }}'s Reviews</h2>
+
+{% for review in user_reviews %}
+<section>
+    <h3>{{ review.date }} - {{review.whisky.name}} from {{review.whisky.distillery.name}}</h3>
+    <p>{{ review.description }}</p>
+    <p>{{review.rating}}</p>
+</section>
+{% endfor %}
+
+{% endblock %}
