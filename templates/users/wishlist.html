@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ user.name }}'s Wishlist</h2>
+
+{% for whisky in user_wishlist %}
+<section>
+    <h3><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></h3>
+    <p><a href="/distilleries/{{whisky.distillery.id}}">{{ whisky.distillery.name }}</a></p>
+</section>
+{% endfor %}
+
+{% endblock %}

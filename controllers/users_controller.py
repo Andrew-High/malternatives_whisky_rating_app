@@ -55,4 +55,4 @@ def user(id):
 def user_wishlist(id):
     user = user_repository.select(id)
     user_wishlist = user_repository.get_wishlist_of_user(id)
-    return render_template("user/wishlist.html", user = user, user_wishlist = user_wishlist)
+    return render_template("users/wishlist.html", user = user, user_wishlist = user_wishlist)
