@@ -14,7 +14,8 @@ def whiskies():
 # NEW
 @whiskies_blueprint.route("/whiskies/new")
 def new_whisky():
-    return render_template("whiskies/new.html")
+    distilleries = distillery_repository.select_all()
+    return render_template("whiskies/new.html", distilleries = distilleries)
 
 # CREATE
 @whiskies_blueprint.route("/whiskies", methods=["POST"])

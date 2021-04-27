@@ -8,19 +8,27 @@
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
 
-        <label for="region">Distillery:</label>
-        <select name="region" id="region">
-            <option value="" disabled selected>Select a region</option>
-            <option value="campbeltown">Campbeltown</option>
-            <option value="islay">Islay</option>
-            <option value="speyside">Speyside</option>
-            <option value="highlands">Highlands</option>
-            <option value="lowlands">Lowlands</option>
-            <option value="islands">Islands</option>
+        <label for="type">Type:</label>
+        <select name="type" id="type">
+            <option value="" disabled selected>Select a type</option>
+            <option value="Single Malt">Single Malt</option>
+            <option value="Single Grain">Single Grain</option>
+            <option value="Blended Malt">Blended Malt</option>
+            <option value="Blended Grain">Blended Grain</option>
+            <option value="Blended Whisky">Blended Whisky</option>
         </select>
 
-        <label for="founded">Founded:</label>
-        <input type="number" name="founded" id="founded">
+        <label for="distillery">Distillery:</label>
+        <select name="distillery_id" id="distillery_id">
+            <option value="" disabled selected>Select a distillery</option>
+            {% for distillery in distilleries %}          
+            <option value="{{distillery.id}}">{{distillery.name}}</option>
+            {% endfor %}
+            <option value=None>Not applicable</option>
+        </select>
+
+        <label for="flavour_profile">Flavour Profile:</label>
+        <input type="text" name="flavour_profile" id="flavour_profile">
 
         <input type="submit">
     </div>
