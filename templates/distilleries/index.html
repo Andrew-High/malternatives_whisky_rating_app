@@ -10,7 +10,9 @@
     {% for whisky in distillery.whiskies %}
         <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>     
     {% endfor%}
-    <button><a href="distilleries/{{distillery.id}}/delete">Delete this distillery</a></button>
+    <form action="/distilleries/{{ distillery.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
 </section>
 {% endfor %}
 
