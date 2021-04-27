@@ -1,6 +1,8 @@
 from db.run_sql import run_sql
 from models.user import User
 from models.whisky import Whisky
+from models.distillery import Distillery
+import repositories.whisky_repository as whisky_repository
 import pdb
 
 # CREATE
@@ -52,7 +54,8 @@ def get_wishlist_of_user(id):
     values = [id]
     results = run_sql(sql,values)
     for result in results:
-        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], result["id"], result["distillery_id"])
+        distillery = whisky_repository.get_distillery(result["distillery_id"])
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery, result["id"])
         whiskies.append(whisky)
     return whiskies
 

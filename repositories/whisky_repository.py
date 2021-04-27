@@ -1,6 +1,7 @@
 import pdb
 from db.run_sql import run_sql
 from models.whisky import Whisky
+from models.distillery import Distillery
 import repositories.distillery_repository as distillery_repository
 
 # CREATE
@@ -57,7 +58,7 @@ def delete(id):
 def get_distillery(distillery_id):
     sql = "SELECT * FROM distilleries WHERE id = %s"
     values = [distillery_id]
-    results = run_sql(sql, values)
+    results = run_sql(sql, values)[0]
     distillery = Distillery(results["name"], results["region"], results["founded"], results["id"])
     return distillery
 
