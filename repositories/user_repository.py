@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.user import User
+import pdb
 
 # CREATE
 def save(user):
@@ -20,6 +21,7 @@ def select_all():
     return users
 
 def select(id):
+    pdb.set_trace
     sql = "SELECT * FROM users WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
@@ -45,7 +47,7 @@ def delete(id):
 # additional logic functions
 def get_wishlist_of_user(id):
     whiskies = []
-    sql = "SELECT whiskies.* FROM whiskies INNER JOIN wishlists ON wishlists.whisky_id WHERE wishlists.whisky_id = %s"
+    sql = "SELECT whiskies.* FROM whiskies INNER JOIN wishlists ON wishlists.whisky_id WHERE wishlists.user_id = %s"
     values = [id]
     results = run_sql(sql,values)
     for result in results:

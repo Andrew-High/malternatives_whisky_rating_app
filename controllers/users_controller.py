@@ -51,6 +51,7 @@ def user(id):
     return render_template("users/individual.html", user = user)
 
 # recall individual user's wishlist
+@users_blueprint.route("/users/<id>/wishlist")
 def user_wishlist(id):
     user = user_repository.select(id)
     user_wishlist = user_repository.get_wishlist_of_user(id)
