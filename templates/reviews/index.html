@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>All Reviews</h2>
+<br>
+
+{% for review in reviews %}
+<section>
+    <h3>{{ review.date }}</h3>
+        <p></p>
+        
+    {% endfor%}
+</section>
+{% endfor %}
+
+{% endblock %}

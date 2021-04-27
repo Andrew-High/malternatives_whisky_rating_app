@@ -2,6 +2,8 @@ import pdb
 from flask import Blueprint, Flask, redirect, render_template, request
 from models.user import User
 import repositories.review_repository as review_repository
+import repositories.whisky_repository as whisky_repository
+import repositories.user_repository as user_repository
 
 users_blueprint = Blueprint("review", __name__)
 
