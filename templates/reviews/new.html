@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add a New Review</h2>
+
+<form action="/reviews" method="POST">
+    <div>
+        <label for="whisky">Whisky:</label>
+        <select name="whisky_id" id="whisky">
+            {% for whisky in whiskies %}
+            <option value="{{ whisky.id }}">
+                {{ whisky.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="rating">Rating:</label>
+        <select name="rating" id="rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}

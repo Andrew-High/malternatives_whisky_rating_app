@@ -16,17 +16,18 @@ def reviews():
 # NEW
 @reviews_blueprint.route("/reviews/new")
 def new_review():
-    return render_template("reviews/new.html")
+    whiskies = whisky_repository.select_all()
+    return render_template("reviews/new.html", whiskies = whiskies)
 
 # CREATE
 @reviews_blueprint.route("/reviews", methods=["POST"])
 def create_review():
-    whisky_id = request.form["whisky_id"]
-    user_id = request.form["user_id"]
+    whisky = whisky_repository.select(request.form["whisky_id"])
+    user = user_repository.select(request.formn["id"])
     rating = request.form["rating"]
     date = request.form["date"]
     description = request.form["description"]
-    new_review = Review(whisky_id, user_id, rating, date, description)
+    new_review = Review(whisky, user, rating, date, description)
     review_repository.save(new_review)
     return redirect("/reviews")
 
