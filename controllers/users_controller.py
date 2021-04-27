@@ -32,7 +32,7 @@ def edit_users(id):
 
 # UPDATE
 @users_blueprint.route("/users/<id>", methods = ["POST"])
-def update_distillery(id):
+def update_user(id):
     name = request.form["name"]
     user = Users(name, id)
     user_repository.update(user)
