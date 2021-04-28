@@ -64,3 +64,13 @@ def user_reviews(id):
     user = user_repository.select(id)
     user_reviews = review_repository.get_reviews_of_user(id)
     return render_template("users/reviews.html", user = user, user_reviews = user_reviews)
+
+# add whisky to user wishlist
+@users_blueprint.route("/users/<id>/wishlist", methods = ["POST"])
+def add_whisky_to_user_wishlist(id):
+    user_id = request.form["user_id"]
+    user = user_repository.select(user_id)
+    whisky_id = request.form["whisky_id"]
+    user_repository.add_whisky_to_user_wishlist(user_id, whisky_id)
+    user_wishlist = user_repository.get_wishlist_of_user(user_id)
+    return redirect ("users/wishlist.html", user = user, user_wishlist = user_wishlist)

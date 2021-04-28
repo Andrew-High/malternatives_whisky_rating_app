@@ -9,7 +9,9 @@ whiskies_blueprint = Blueprint("whisky", __name__)
 @whiskies_blueprint.route("/whiskies")
 def whiskies():
     whiskies = whisky_repository.select_all()
-    return render_template("whiskies/index.html", whiskies=whiskies)
+    dummy = 81
+    user = user_repository.select(dummy)
+    return render_template("whiskies/index.html", whiskies=whiskies, user = user)
 
 # NEW
 @whiskies_blueprint.route("/whiskies/new")
