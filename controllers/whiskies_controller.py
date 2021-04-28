@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 from models.whisky import Whisky
 import repositories.whisky_repository as whisky_repository
 import repositories.distillery_repository as distillery_repository
+import repositories.user_repository as user_repository
 
 whiskies_blueprint = Blueprint("whisky", __name__)
 
@@ -9,7 +10,7 @@ whiskies_blueprint = Blueprint("whisky", __name__)
 @whiskies_blueprint.route("/whiskies")
 def whiskies():
     whiskies = whisky_repository.select_all()
-    dummy = 81
+    dummy = 1
     user = user_repository.select(dummy)
     return render_template("whiskies/index.html", whiskies=whiskies, user = user)
 

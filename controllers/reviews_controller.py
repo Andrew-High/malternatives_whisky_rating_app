@@ -4,6 +4,7 @@ from models.user import User
 import repositories.review_repository as review_repository
 import repositories.whisky_repository as whisky_repository
 import repositories.user_repository as user_repository
+from models.review import Review
 
 reviews_blueprint = Blueprint("review", __name__)
 
@@ -18,15 +19,18 @@ def reviews():
 def new_review():
     whiskies = whisky_repository.select_all()
     # hard coded user id in following function temporarily
-    user = user_repository.select(81)
+
+    user = user_repository.select(1)
     return render_template("reviews/new.html", whiskies = whiskies, user = user)
 
 # CREATE
 @reviews_blueprint.route("/reviews", methods=["POST"])
 def create_review():
-    whisky = whisky_repository.select(request.form["whisky_id"])
+    whisky_id = request.form["whisky_id"]
+    whisky = whisky_repository.select(whisky_id)
     # hard coded user id in following function temporarily
-    user = user_repository.select(id = 81)
+    dummy = 1
+    user = user_repository.select(dummy)
     rating = request.form["rating"]
     date = request.form["date"]
     description = request.form["description"]

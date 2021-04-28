@@ -54,9 +54,14 @@ def get_wishlist_of_user(id):
     values = [id]
     results = run_sql(sql,values)
     for result in results:
-        distillery = whisky_repository.get_distillery(result["distillery_id"])
-        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery, result["id"])
-        whiskies.append(whisky)
+        distillery_id = result["distillery_id"]
+        if distillery_id != None:
+            distillery = whisky_repository.get_distillery(distillery_id)
+            whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery, result["id"])
+            whiskies.append(whisky)
+        else:
+            whisky = Whisky(result["name"], result["type"], result["flavour_profile"], None, result["id"])
+            whiskies.append(whisky)
     return whiskies
 
 def add_whisky_to_user_wishlist(user_id, whisky_id):

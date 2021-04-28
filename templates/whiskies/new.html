@@ -9,7 +9,7 @@
         <input type="text" name="name" id="name">
 
         <label for="type">Type:</label>
-        <select name="type" id="type">
+        <select name="type" id="type" required>
             <option value="" disabled selected>Select a type</option>
             <option value="Single Malt">Single Malt</option>
             <option value="Single Grain">Single Grain</option>
@@ -19,7 +19,7 @@
         </select>
 
         <label for="distillery">Distillery:</label>
-        <select name="distillery_id" id="distillery_id">
+        <select name="distillery_id" id="distillery_id" required>
             <option value="" disabled selected>Select a distillery</option>
             {% for distillery in distilleries %}          
             <option value="{{distillery.id}}">{{distillery.name}}</option>

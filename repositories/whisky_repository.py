@@ -25,12 +25,11 @@ def select_all():
         distillery = None
         if result["distillery_id"] != None:
             distillery = distillery_repository.select(result["distillery_id"])
-        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery)
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery, result["id"])
         whiskies.append(whisky)
     return whiskies
 
 def select(id):
-    pdb.set_trace()
     sql = "SELECT * FROM whiskies WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
@@ -58,7 +57,8 @@ def get_distillery(distillery_id):
     sql = "SELECT * FROM distilleries WHERE id = %s"
     values = [distillery_id]
     results = run_sql(sql, values)[0]
-    distillery = Distillery(results["name"], results["region"], results["founded"], results["id"])
+    whiskies = []
+    distillery = Distillery(results["name"], results["region"], results["founded"], whiskies, results["id"])
     return distillery
 
 def select_by_distillery(distillery_id):

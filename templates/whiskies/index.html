@@ -8,9 +8,8 @@
 <section>
     <h3><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></h3>
     <p><a href="/distilleries/{{whisky.distillery.id}}">{{ whisky.distillery.name }}</a></p>
-    <form action="/users/<id>/wishlist" method="POST"> 
+    <form action="/users/{{user.id}}/wishlist/{{whisky.id}}" method="POST"> 
         <input type="submit" value="Add Whisky to My Wishlist">
-        <input type="hidden" value="{{user.id}}">
     </form>
     <form action="/whiskies/{{ whisky.id }}/delete" method="POST">
         <input type="submit" value="Delete">
