@@ -5,9 +5,13 @@
 <br>
 
 {% for review in reviews %}
-<section>
+<section class="review">
     <h3>{{ review.date }}</h3>
-        <p></p>
+        <h4>{{review.user.name}}</h4>
+        <h5>{{review.whisky.name}}</h5>
+        <h5>{{review.whisky.distillery.name}}</h5>
+        <p>{{review.description}}</p>
+        <p>{{ review.rating}} out of 5</p>
         
 </section>
 {% endfor %}

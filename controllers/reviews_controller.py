@@ -19,7 +19,6 @@ def reviews():
 def new_review():
     whiskies = whisky_repository.select_all()
     # hard coded user id in following function temporarily
-
     user = user_repository.select(1)
     return render_template("reviews/new.html", whiskies = whiskies, user = user)
 

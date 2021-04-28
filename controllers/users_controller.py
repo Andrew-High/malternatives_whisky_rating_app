@@ -70,7 +70,6 @@ def user_reviews(id):
 def add_whisky_to_user_wishlist(user_id, whisky_id):
     user = user_repository.select(user_id)
     user_repository.add_whisky_to_user_wishlist(user_id, whisky_id)
-    # user_wishlist = user_repository.get_wishlist_of_user(user_id)
     return redirect(f"/users/{user_id}/wishlist")
 
 

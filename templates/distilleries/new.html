@@ -4,26 +4,24 @@
 <h2>Add a New Distillery</h2>
 
 <form action="/distilleries" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
 
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+    <label for="region">Region:</label>
+    <select name="region" id="region">
+        <option value="" disabled selected>Select a region</option>
+        <option value="Campbeltown">Campbeltown</option>
+        <option value="Islay">Islay</option>
+        <option value="Speyside">Speyside</option>
+        <option value="Highlands">Highlands</option>
+        <option value="Lowlands">Lowlands</option>
+        <option value="Islands">Islands</option>
+    </select>
 
-        <label for="region">Region:</label>
-        <select name="region" id="region">
-            <option value="" disabled selected>Select a region</option>
-            <option value="Campbeltown">Campbeltown</option>
-            <option value="Islay">Islay</option>
-            <option value="Speyside">Speyside</option>
-            <option value="Highlands">Highlands</option>
-            <option value="Lowlands">Lowlands</option>
-            <option value="Islands">Islands</option>
-        </select>
+    <label for="founded">Founded:</label>
+    <input type="number" name="founded" id="founded">
 
-        <label for="founded">Founded:</label>
-        <input type="number" name="founded" id="founded">
-
-        <input type="submit">
-    </div>
+    <input type="submit">
 </form>
 
 {% endblock %}

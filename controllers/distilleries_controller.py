@@ -44,11 +44,19 @@ def update_distillery(id):
     name = request.form["name"]
     region = request.form["region"]
     founded = request.form["founded"]
-    distillery = Distillery(name, region, founded, id)
-    distillery_repository.update(distillery)
+    distillery = distillery_repository.select(id)
+    updated_distillery = Distillery(name, region, founded, distillery.whiskies, id)
+    distillery_repository.update(updated_distillery)
+    return redirect(f"/distilleries/{id}")
 
 # DELETE
 @distilleries_blueprint.route("/distilleries/<id>/delete", methods = ["POST"])
 def delete_distillery(id):
     distillery_repository.delete(id)
     return redirect("/distilleries")
+
+# individual distillery
+@distilleries_blueprint.route("/distilleries/<id>")
+def distillery(id):
+    distillery = distillery_repository.select(id)
+    return render_template("distilleries/individual.html", distillery = distillery)

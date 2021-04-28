@@ -11,29 +11,30 @@
 <body>
     <header>
         <div class="top_bar">
-            <img src="/static/images/Wheatsheaf.png" style="width:150px;height:100px">
-            <nav>
-                <ul class="menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/distilleries">Distilleries</a></li>
-                    <li><a href="/whiskies">Whiskies</a></li>
-                    <li><a href="/reviews">All Reviews</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="second_bar">
-            <h1>Malternatives - A Whisky Rating App</h1>
+            <a href="/"><img src="/static/images/Wheatsheaf.png" style="width:150px;height:100px"></a>
             <div>
-                <label for="user_account">User account</label>
-                <a href="/users/1"><img src="/static/images/user_account.png" style="width:50px;height:50px"></a>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="/distilleries">Distilleries</a></li>
+                        <li><a href="/whiskies">Whiskies</a></li>
+                        <li><a href="/reviews">All Reviews</a></li>
+                    </ul>
+                </nav>
+                <h1>Malternatives - A Whisky Rating App</h1>
+            </div>
+            <div class="user_account">
+                    <label for="user_account" class="user_account_label">User account</label>
+                    <a href="/users/1"><img src="/static/images/user_account.png" style="width:50px;height:50px"></a>
             </div>
         </div>
     </header>
     <hr>
-    <button><a href="/reviews/new">Review a whisky!</a></button>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+    <div class="body">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <button class="review_button"><a href="/reviews/new" class="review_button">Review a whisky!</a></button>
     </div>
 </body>
 </html>

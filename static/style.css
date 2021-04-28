@@ -1,12 +1,16 @@
 body{
-    font-family: 'Architects Daughter', cursive; font-size: 16px;
+    font-family: 'Architects Daughter', cursive; font-size: 18px;
     background-color: rgb(230, 201, 109);
   }
 
+a {
+    font-family: 'Architects Daughter';
+}
 
 ul {
     list-style-type: none;
     display:flex;
+    font-size: 16px;
   }
 
 li {
@@ -19,19 +23,81 @@ h1 {
 
 ul.menu {
     margin:0px;
+    padding-left: 0px;
 }
 
 .top_bar {
     display:flex;
+    justify-content: space-between;
 }
 
 .second_bar {
     display:flex;
-    justify-content: space-between;
 }
 
 h1 {
     margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.user_account {
+    align-self: flex-end;
+    display:flex;
+}
+
+.user_account_label {
+    align-self: center;
+}
+
+hr {
+    margin: 2px;
+    margin-bottom: 8px;
+}
+
+.body {
+    display:flex;
+    justify-content: space-between;
+}
+
+.container {
+    flex-grow: 4;
+}
+
+.review_button {
+    flex-grow: 1;
+    height: 60px;
+    width: 200px;
+    font-size: 28px;
+    background-color: rgb(175, 155, 88);
+    font-family: 'Architects Daughter';
+}
+
+h2 {
+    margin: 10px; 
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+h4 {
+    margin: 5px;
+    font-size: 20px;
+}
+
+h5 {
+    margin: 5px;
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.review {
+    margin-left: 10px;
 }
 
 
