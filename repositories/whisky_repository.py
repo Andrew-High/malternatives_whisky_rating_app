@@ -33,7 +33,13 @@ def select(id):
     sql = "SELECT * FROM whiskies WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    whisky = Whisky(result["name"], result["type"], result["flavour_profile"])
+    whisky = None
+    if result["distillery_id"] != None:
+        distillery_id = result["distillery_id"]
+        distillery = distillery_repository.select(distillery_id)
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], distillery, result["id"])
+    else:
+        whisky = Whisky(result["name"], result["type"], result["flavour_profile"], None, result["id"])
     return whisky
 
 # UPDATE

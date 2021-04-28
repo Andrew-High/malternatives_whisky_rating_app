@@ -28,9 +28,8 @@ def new_review():
 def create_review():
     whisky_id = request.form["whisky_id"]
     whisky = whisky_repository.select(whisky_id)
-    # hard coded user id in following function temporarily
-    dummy = 1
-    user = user_repository.select(dummy)
+    user_id = request.form["user_id"]
+    user = user_repository.select(user_id)
     rating = request.form["rating"]
     date = request.form["date"]
     description = request.form["description"]

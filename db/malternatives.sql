@@ -29,12 +29,12 @@ CREATE TABLE reviews (
     rating INT,
     description TEXT,
     date VARCHAR (255),
-    whisky_id SERIAL REFERENCES whiskies(id),
-    user_id SERIAL REFERENCES users(id)
+    whisky_id INT REFERENCES whiskies(id),
+    user_id INT REFERENCES users(id)
 );
 
 CREATE TABLE wishlists (
     id SERIAL PRIMARY KEY,
-    user_id SERIAL REFERENCES users(id),
-    whisky_id SERIAL REFERENCES whiskies(id)
+    user_id INT REFERENCES users(id),
+    whisky_id INT REFERENCES whiskies(id)
 );

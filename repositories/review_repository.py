@@ -8,8 +8,8 @@ import pdb
 
 # CREATE
 def save(review):
-    sql = "INSERT INTO reviews (whisky_id, user_id, rating, date, description) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [review.whisky.id, review.user.id, review.rating, review.date, review.description]
+    sql = "INSERT INTO reviews (rating, description, date, whisky_id, user_id) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    values = [review.rating, review.description, review.date, review.whisky.id, review.user.id]
     results = run_sql(sql, values)
     id = results[0]["id"]
     review.id = id
@@ -20,8 +20,10 @@ def select_all():
     sql = "SELECT * FROM reviews"
     results = run_sql(sql)
     for result in results:
-        whisky = whisky_repository.select(result["whisky_id"])
-        user = user_repository.select(result["user_id"])
+        whisky_id = result["whisky_id"]
+        whisky = whisky_repository.select(whisky_id)
+        user_id = result["user_id"]
+        user = user_repository.select(user_id)
         review = Review(whisky, user, result["rating"], result["date"], result["description"], result["id"])
         reviews.append(review)
     return reviews
