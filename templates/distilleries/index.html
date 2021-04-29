@@ -7,14 +7,25 @@
 {% for distillery in distilleries %}
 <section>
     <h3><a href="/distilleries/{{distillery.id}}">{{ distillery.name }}</a></h3>
-    {% for whisky in distillery.whiskies %}
+    <div class=distillerys_whiskies>
+        <p>Whiskies:</p>
+        <ul class=list_of_whiskies>
+            {% for whisky in distillery.whiskies %}
+                <li><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></li>     
+            {% endfor%}
+        </ul>
+    </div>
+    {# {% for whisky in distillery.whiskies %}
         <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>     
-    {% endfor%}
-    <a href="/distilleries/{{distillery.id}}/edit">Edit Distillery</a>
-    <form action="/distilleries/{{distillery.id}}/delete" method="POST">
-        <input type="submit" value="Delete">
-    </form>
-    
+    {% endfor%} #}
+    <div class = "buttons">
+        <form action="/distilleries/{{distillery.id}}/edit" method="GET">
+            <input type="submit" value="Edit Distillery" >
+        </form>
+        <form action="/distilleries/{{distillery.id}}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
 </section>
 {% endfor %}
 

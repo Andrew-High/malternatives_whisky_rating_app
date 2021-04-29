@@ -5,7 +5,7 @@
 
 <form action="/reviews" method="POST">
 
-    <input type="hidden" name="user_id" value="{{user.id}}">
+    <input type="hidden" name="user_id" value="{{user.id}}" class="review_form">
     
     <label for="whisky">Whisky:</label>
     <select name="whisky_id" id="whisky" required>
@@ -24,14 +24,16 @@
         <option value="2">2</option>
         <option value="1">1</option>
     </select>
-   
-    <label for="description">Review:</label>
-    <input type="text" name="description" id="description">
 
     <label for="date">Date:</label>
     <input type="text" name="date" id="date">
-    
-        <input type="submit">
+
+    <div class="review_description">
+        <label for="description" class="review_description_label">Review:</label>
+        <textarea name="description" id="description" cols="80" rows="5"></textarea>
+    </div>
+
+    <input type="submit" class="review_submit">
     
 </form>
 

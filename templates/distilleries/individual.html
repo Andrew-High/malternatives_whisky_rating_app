@@ -4,11 +4,18 @@
 <h2>{{ distillery.name }}</h2>
     <h3>Region: {{ distillery.region }}</h3>
     <h3>Founded in {{ distillery.founded }}</h3>
-    {% for whisky in distillery.whiskies %}
-        <p><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></p>     
-    {% endfor%}
+    <div class=distillerys_whiskies>
+        <p>Whiskies:</p>
+        <ul class=list_of_whiskies>
+            {% for whisky in distillery.whiskies %}
+                <li><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></li>     
+            {% endfor%}
+        </ul>
+    </div>
 
-    <a href="/distilleries/{{distillery.id}}/edit">Edit Distillery</a>
+    <form action="/distilleries/{{distillery.id}}/edit" method="GET">
+        <input type="submit" value="Edit Distillery">
+    </form>
     <form action="/distilleries/{{distillery.id}}/delete" method="POST">
         <input type="submit" value="Delete">
     </form>

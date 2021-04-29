@@ -7,13 +7,15 @@
 {% for whisky in whiskies %}
 <section>
     <h3><a href="/whiskies/{{whisky.id}}">{{ whisky.name }}</a></h3>
-    <p><a href="/distilleries/{{whisky.distillery.id}}">{{ whisky.distillery.name }}</a></p>
-    <form action="/users/{{user.id}}/wishlist/{{whisky.id}}" method="POST"> 
-        <input type="submit" value="Add Whisky to My Wishlist">
-    </form>
-    <form action="/whiskies/{{ whisky.id }}/delete" method="POST">
-        <input type="submit" value="Delete">
-    </form>
+    <p>Distillery: <a href="/distilleries/{{whisky.distillery.id}}">{{ whisky.distillery.name }}</a></p>
+    <div class="buttons">
+        <form action="/users/{{user.id}}/wishlist/{{whisky.id}}" method="POST"> 
+            <input type="submit" value="Add Whisky to My Wishlist">
+        </form>
+        <form action="/whiskies/{{ whisky.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
 </section>
 {% endfor %}
 
