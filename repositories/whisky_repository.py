@@ -5,15 +5,25 @@ from models.distillery import Distillery
 import repositories.distillery_repository as distillery_repository
 
 # CREATE
+# define function to save a whisky
 def save(whisky):
+    # sql query = create entry in whiskies table using values given below, returning the created row in the table
     sql = "INSERT INTO whiskies (name, type, flavour_profile, distillery_id) VALUES (%s, %s, %s, %s) RETURNING * "
+    # set distillery id to None
     distillery_id = None
+    # if whisky's distillery is not equal to None
     if whisky.distillery != None:
+        # set distillery_id to the whisky's distillery's
         distillery_id = whisky.distillery.id
+    # set values to pass into sql query as whisky name, whisky type, whisky flavour profile and distillery_id
     values = [whisky.name, whisky.type, whisky.flavour_profile, distillery_id]
+    # run the run_sql function passing in the sql query and values and return the results to the results variable
     results = run_sql(sql, values)
+    # set id to equal the value associated with the id key of the 0th index of the results
     id = results[0]["id"]
+    # set the whisky's id to be equal to id
     whisky.id = id
+    # return whisky
     return whisky
 
 # READ
@@ -75,3 +85,4 @@ def select_by_distillery(distillery_id):
     for result in results:
         whiskies.append(result)
     return whiskies
+
